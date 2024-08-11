@@ -10,8 +10,7 @@ import java.io.Serializable;
 import java.util.HashSet;
 import java.util.Set;
 import java.util.UUID;
-@Getter
-@Setter
+
 @Entity
 @Table(name="tb_author")
 public class AuthorModel implements Serializable {
@@ -29,6 +28,14 @@ public class AuthorModel implements Serializable {
 
     private Set<BookModel> books = new HashSet<>();
 
+    public AuthorModel(){
+
+    }
+    public AuthorModel(UUID id, String name, Set<BookModel> books) {
+        this.id = id;
+        this.name = name;
+        this.books = books;
+    }
 
 
 

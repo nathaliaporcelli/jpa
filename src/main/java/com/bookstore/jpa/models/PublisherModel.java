@@ -12,8 +12,7 @@ import java.util.Set;
 import java.util.UUID;
 
 @Entity
-@Getter
-@Setter
+
 @Table(name="tb_publisher")
 public class PublisherModel implements Serializable {
     @Serial
@@ -30,6 +29,27 @@ public class PublisherModel implements Serializable {
     @OneToMany(mappedBy = "publisher",fetch = FetchType.LAZY)
     private Set<BookModel> books = new HashSet<>();
 
+    public UUID getId() {
+        return id;
+    }
 
+    public String getName() {
+        return name;
+    }
 
+    public Set<BookModel> getBooks() {
+        return books;
+    }
+
+    public void setId(UUID id) {
+        this.id = id;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public void setBooks(Set<BookModel> books) {
+        this.books = books;
+    }
 }

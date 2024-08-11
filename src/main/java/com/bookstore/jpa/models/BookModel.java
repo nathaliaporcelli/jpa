@@ -11,8 +11,6 @@ import java.util.Set;
 import java.util.UUID;
 
 @Entity
-@Getter
-@Setter
 
 @Table(name="tb_book")
 public class BookModel implements Serializable {
@@ -36,5 +34,46 @@ public class BookModel implements Serializable {
             inverseJoinColumns = @JoinColumn(name="author_id"))
     private Set<AuthorModel> authors = new HashSet<>();
 
+    @OneToOne(mappedBy = "book", cascade = CascadeType.ALL)
+    private ReviewModel review;
 
+    public UUID getId() {
+        return id;
+    }
+
+    public String getTitle() {
+        return title;
+    }
+
+    public PublisherModel getPublisher() {
+        return publisher;
+    }
+
+    public Set<AuthorModel> getAuthors() {
+        return authors;
+    }
+
+    public ReviewModel getReview() {
+        return review;
+    }
+
+    public void setId(UUID id) {
+        this.id = id;
+    }
+
+    public void setTitle(String title) {
+        this.title = title;
+    }
+
+    public void setPublisher(PublisherModel publisher) {
+        this.publisher = publisher;
+    }
+
+    public void setAuthors(Set<AuthorModel> authors) {
+        this.authors = authors;
+    }
+
+    public void setReview(ReviewModel review) {
+        this.review = review;
+    }
 }
